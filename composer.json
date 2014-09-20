@@ -1,0 +1,31 @@
+{
+    "name": "brightmachine/laratash",
+    "type": "library",
+    "description": "A Laravel 5+ wrapper for mustache.php, a PHP implementation of http://mustache.github.io/",
+    "keywords": ["laravel", "laravel 5", "mustache", "php"],
+    "homepage": "https://github.com/brightmachine/laratash",
+    "license": "MIT",
+    "authors": [
+        {
+            "name":     "Conar Welsh",
+            "email":    "conar@welshlabs.com"
+        },
+        {
+            "name":     "Kelvin Jones",
+            "email":    "kelvin@brightmachine.co.uk"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/view": "~5.0",
+        "illuminate/filesystem": "~5.0",
+        "illuminate/support": "~5.0",
+        "mustache/mustache": "~2.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Laratash\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
