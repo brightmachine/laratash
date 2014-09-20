@@ -18,7 +18,7 @@ class LaratashServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->package('brightmachine/laratash');
+        $this->package('brightmachine/laratash', null, __DIR__);
 
         $app = $this->app;
 
