@@ -40,24 +40,23 @@ Open: `config/app.php`
 You are all setup!
 
 
-
 # Usage
 
-Mustache-L4 is merely a wrapper for the [Mustache.php](https://github.com/bobthecow/mustache.php) library that integrates it into Laravel 4.
+Laratash is merely a wrapper for the [Mustache.php](https://github.com/bobthecow/mustache.php) library that integrates it into Laravel 5+.
 
-Mustache-L4 registers itself with the Laravel View class, providing seemless integration with Laravel.  You can use Mustache just as you would Blade!
-The Laravel View class will choose the right templating engine to use based on the file extension of the view.  So all you have to do to render Mustache files, is ensure that your view has a `.mustache` file extension.  Mustache-L4 will take care of the rest.
+Laratash registers itself with the Laravel View class, providing seamless integration with Laravel.  You can use Mustache just as you would Blade!
+The Laravel View class will choose the right template engine to use based on the file extension of the view.  So all you have to do to render Mustache files, is ensure that your view has a `.mustache` file extension.  Laratash will take care of the rest.
 
-You can even mix and match template engines.  For instance maybe you have a Blade layout file, and you want to nest a Mustache view, thats fine!  However just be aware of the fact that Mustache does not understand Block Sections like Blade does.
+You can even mix and match template engines.  For instance maybe you have a Blade layout file, and you want to nest a Mustache view, that's fine!  However just be aware of the fact that Mustache does not understand Block Sections like Blade does.
 The Mustache view will be rendered into a variable named whatever section you passed the view to.  So for example if you were to do:
 
 ```php
-$this->layout->nest('content', 'some.view');
-$this->layout->nest('sidebar', 'some.sidebar');
+$view->nest('content', 'some.view');
+$view->nest('sidebar', 'some.sidebar');
 ```
 
 The contents of the parsed `some.view` file will be available in the template file under a variable called `$content`.
-The contents of the parsed `some.sidebar` would be availble in the template file, under a variable called `$sidebar`.
+The contents of the parsed `some.sidebar` would be available in the template file, under a variable called `$sidebar`.
 
 By default, Mustache partials are also loaded using Laravel's ViewFinder, so you can feel free to use dot-notation to specify a view.
 
@@ -68,7 +67,6 @@ By default, Mustache partials are also loaded using Laravel's ViewFinder, so you
 ```
 
 Other than that it is business as usual!
-
 
 # Examples:
 
