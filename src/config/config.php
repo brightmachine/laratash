@@ -6,7 +6,7 @@ return array(
     'template_class_prefix' => '__Mustache_',
 
     // A cache directory for compiled templates. Mustache will not cache templates unless this is set.
-    'cache' => storage_path() . '/cache/views/mustache',
+    'cache' => storage_path() . '/framework/views',
 
     // Override default permissions for cache files. Defaults to using the system-defined umask.
     // It is strongly recommended that you configure your umask properly rather than overriding permissions here.
