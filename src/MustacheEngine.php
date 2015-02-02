@@ -19,7 +19,8 @@ class MustacheEngine implements EngineInterface
     {
         $view = $this->files->get($path);
         $app = app();
-        $m = new Mustache_Engine($app['config']->get('laratash::config'));
+
+        $m = new Mustache_Engine($app['config']->get('laratash'));
  
         $data = array_map(function ($item) {
             return (is_object($item) && method_exists($item, 'toArray')) ? $item->toArray() : $item;

@@ -1,6 +1,7 @@
 <?php namespace Laratash;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\ViewFinderInterface;
 
 class LaratashServiceProvider extends ServiceProvider
 {
@@ -18,21 +19,11 @@ class LaratashServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->package('brightmachine/laratash', null, __DIR__);
+        $this->setupConfig();
 
-        $app = $this->app;
+        $this->registerMustacheEngine();
 
-        $app->extend('view.engine.resolver', function ($resolver, $app) {
-            $resolver->register('mustache', function () use ($app) {
-                return $app->make('Laratash\MustacheEngine');
-            });
-            return $resolver;
-        });
-
-        $app->extend('view', function ($env, $app) {
-            $env->addExtension('mustache', 'mustache');
-            return $env;
-        });
+        $this->registerMustacheViewExtension();
     }
 
     /**
@@ -42,6 +33,30 @@ class LaratashServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('laratash');
+        return ['laratash', 'mustache.engine'];
+    }
+
+    private function setupConfig()
+    {
+        $config = __DIR__ . '/config/config.php';
+        $this->mergeConfigFrom($config, 'laratash');
+    }
+
+    private function registerMustacheEngine()
+    {
+        $this->app->bind('mustache.engine', function() {
+            return $this->app->make('Laratash\MustacheEngine');
+        });
+    }
+
+    private function registerMustacheViewExtension()
+    {
+        $this->app['view']->addExtension(
+            'mustache',
+            'mustache',
+            function () {
+                return $this->app['mustache.engine'];
+            }
+        );
     }
 }
