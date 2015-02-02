@@ -1,8 +1,8 @@
 <?php
 namespace Laratash;
 
-use Mustache_Loader;
 use Illuminate\Filesystem\Filesystem;
+use Mustache_Loader;
 
 class FilesystemLoader implements Mustache_loader
 {
@@ -17,7 +17,7 @@ class FilesystemLoader implements Mustache_loader
     {
         $this->app    = app();
         $this->files  = $files;
-        $this->finder = $this->app['view.finder'];
+        $this->finder = $this->app['view']->getFinder();
     }
 
     public function load($name)
