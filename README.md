@@ -175,8 +175,10 @@ Other than that it is business as usual!
 
 # Configure
 
-You can alter the configuration options that are passed to Mustache.php by publishing the config file.
+You can alter the configuration options that are passed to Mustache.php in your `ConfigServiceProvider`. E.g. 
 
-	php artisan config:publish brightmachine/laratash
+	config([
+		'laratash.cache' => storage_path() . '/framework/views/mustache',
+	]);
 	
-All options in this config file are passed directly to the Mustache_Engine constructor, so you can use any of the options that you would use with [Mustache.php](https://github.com/bobthecow/mustache.php)
+All `laratash.` options are passed directly to the Mustache_Engine constructor, so you can use any of the options that you would use with [Mustache.php](https://github.com/bobthecow/mustache.php)
