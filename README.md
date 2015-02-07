@@ -18,7 +18,7 @@ Add laratash as a dependency to your `composer.json` file:
 
 ```json
 "require": {
-	"laravel/framework": "~5.0@dev",
+	"laravel/framework":      "~5.0",
 	"brightmachine/laratash": "~5.0"
 }
 ```
