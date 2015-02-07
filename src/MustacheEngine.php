@@ -23,7 +23,7 @@ class MustacheEngine implements EngineInterface
         $m = new Mustache_Engine($app['config']->get('laratash'));
  
         if (isset($data['__context']) && is_object($data['__context'])) {
-            $data = $data['context'];
+            $data = $data['__context'];
         } else {
             $data = array_map(function ($item) {
                 return (is_object($item) && method_exists($item, 'toArray')) ? $item->toArray() : $item;
