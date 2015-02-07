@@ -173,6 +173,16 @@ Other than that it is business as usual!
 			return View::make('blog.index', compact('posts));
 		});
 
+## A note on template data
+
+Laravel expects [view data](http://laravel.com/docs/5.0/views#basic-usage) to be be passed as an `array`.
+
+Mustache PHP, however, also allows a Context object to be used.
+
+If you wish to use a Context object, pass through an array with a `__context` key and this will be used. E.g.
+
+    `return view('my.view', ['__context' => new Context]);`
+
 # Configure
 
 You can alter the configuration options that are passed to Mustache.php in your `ConfigServiceProvider`. E.g. 
