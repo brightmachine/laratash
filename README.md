@@ -183,6 +183,16 @@ If you wish to use a Context object, pass through an array with a `__context` ke
 
     `return view('my.view', ['__context' => new Context]);`
 
+# Helpers
+
+Translation:
+
+```html
+{{#lang}}posts.title{{/lang}}
+
+{{#choice}}posts.title|2{{/choice}}
+```
+
 # Configure
 
 You can alter the configuration options that are passed to Mustache.php in your `ConfigServiceProvider`. E.g. 
