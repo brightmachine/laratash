@@ -5,6 +5,8 @@ use Illuminate\View\Engines\EngineInterface;
 use Illuminate\Filesystem\Filesystem;
 use Mustache_Engine;
 
+use Lang;
+
 class MustacheEngine implements EngineInterface
 {
     /** @var Filesystem */
@@ -19,8 +21,12 @@ class MustacheEngine implements EngineInterface
     {
         $view = $this->files->get($path);
         $app = app();
+	
+	$config = $app['config']->get('laratash');
 
-        $m = new Mustache_Engine($app['config']->get('laratash'));
+        $config['helpers'] = array_merge($this->loadLaravelHelpers(), isset($config['helpers']) ? $config['helpers'] : []);
+
+        $m = new Mustache_Engine($config);
  
         if (isset($data['__context']) && is_object($data['__context'])) {
             $data = $data['__context'];
@@ -31,5 +37,24 @@ class MustacheEngine implements EngineInterface
         }
  
         return $m->render($view, $data);
+    }
+
+    protected function loadLaravelHelpers()
+    {
+        return [
+            'lang' => function($key) {
+                return Lang::get($key);
+            },
+
+            'choice' => function($key) {
+                $args = explode('|', $key);
+
+                if (sizeof($args) < 2) {
+                    $args[1] = 1;
+                }
+
+                return Lang::choice($args[0], $args[1]);
+            }
+        ];
     }
 }
