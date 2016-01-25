@@ -20,6 +20,7 @@
         "illuminate/view": "~5.0",
         "illuminate/filesystem": "~5.0",
         "illuminate/support": "~5.0",
+	"illuminate/translation": "~5.0",
         "mustache/mustache": "~2.7"
     },
     "autoload": {
