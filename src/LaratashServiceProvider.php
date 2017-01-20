@@ -1,7 +1,8 @@
-<?php namespace Laratash;
+<?php
+
+namespace Laratash;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\View\ViewFinderInterface;
 
 class LaratashServiceProvider extends ServiceProvider
 {
@@ -38,13 +39,13 @@ class LaratashServiceProvider extends ServiceProvider
 
     private function setupConfig()
     {
-        $config = __DIR__ . '/config/config.php';
+        $config = __DIR__.'/config/config.php';
         $this->mergeConfigFrom($config, 'laratash');
     }
 
     private function registerMustacheEngine()
     {
-        $this->app->bind('mustache.engine', function() {
+        $this->app->bind('mustache.engine', function () {
             return $this->app->make('Laratash\MustacheEngine');
         });
     }
