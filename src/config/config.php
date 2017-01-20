@@ -12,9 +12,9 @@ return array(
     // It is strongly recommended that you configure your umask properly rather than overriding permissions here.
     // 'cache_file_mode' => 0666,
 
-    // A Mustache loader instance for partials. If none is specified, defaults to an ArrayLoader for the supplied
+    // A Mustache loader class for partials. If none is specified, defaults to an ArrayLoader for the supplied
     // partials option, if present, and falls back to the specified template loader.
-    'partials_loader' => App::make('Laratash\FilesystemLoader'),
+    'partials_loader' => 'Laratash\FilesystemLoader',
     
     // An array of Mustache partials. Useful for quick-and-dirty string template loading,
     // but not as efficient or lazy as a Filesystem (or database) loader.
