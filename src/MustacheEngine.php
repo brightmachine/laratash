@@ -3,7 +3,7 @@
 namespace Laratash;
 
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\View\Engines\EngineInterface;
+use Illuminate\Contracts\View\Engine as EngineInterface;
 use Mustache_Engine;
 
 class MustacheEngine implements EngineInterface
