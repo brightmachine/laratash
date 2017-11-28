@@ -46,7 +46,13 @@ class LaratashServiceProvider extends ServiceProvider
     private function registerMustacheEngine()
     {
         $this->app->bind('mustache.engine', function () {
-            return $this->app->make('Laratash\MustacheEngine');
+            // Support for Laravel 5.5+ contract view engine interface
+            $version = $this->app->version();
+            if (version_compare($version, '5.5', '>=')) {
+                return $this->app->make('Laratash\MustacheContractEngine');
+            }
+
+            return $this->app->make('Laratash\MustacheViewEngine');
         });
     }
 
