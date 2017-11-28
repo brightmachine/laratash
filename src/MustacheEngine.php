@@ -6,7 +6,7 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\View\Engines\EngineInterface;
 use Mustache_Engine;
 
-class MustacheEngine implements EngineInterface
+abstract class MustacheEngine
 {
     /** @var Filesystem */
     private $files;
